@@ -3,15 +3,14 @@
 
 
 #include <gtest/gtest.h>
-#include "../src/MotorManager.h"
+#include "MotorManager.h"
 #include "MockMotor.h"
 
 using namespace testing;
+using namespace mark2;
 
 class MotorManagerTest : public testing::Test {
 protected:
-    void SetUp() override;
-
     MockMotor motor1;
     MockMotor motor2;
     MockMotor motor3;

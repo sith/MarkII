@@ -4,11 +4,13 @@
 
 #include "MarkIIEnvironment.h"
 
-
-void mark2::MarkIIEnvironment::init() {
-    cycle().getListeners()->add(&controller());
+template<typename Motor>
+void mark2::MarkIIEnvironment<Motor>::init() {
+    getCycle().getListeners()->add(&getController());
+    getController().addListener(getMotorManager());
 }
 
-void mark2::MarkIIEnvironment::loop() {
-    cycle().next();
+template<typename Motor>
+void mark2::MarkIIEnvironment<Motor>::loop() {
+    getCycle().next();
 }
