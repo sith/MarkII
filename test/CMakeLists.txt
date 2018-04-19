@@ -7,7 +7,7 @@ add_executable(${PROJECT_NAME}
         ControllerTest.h
         MockMotor.h
         MotorManagerTest.cpp
-        MotorManagerTest.h)
+        MotorManagerTest.h MockControllerListener.h)
 
 target_link_libraries(${PROJECT_NAME} gtest gtest_main)
 target_link_libraries(${PROJECT_NAME} gmock gmock_main)

@@ -18,10 +18,23 @@ namespace mark2 {
         NONE,
         START_MOTORS,
         STOP_MOTORS,
+        THRUST_UP,
+        THRUST_DOWN,
+        PITCH_FORWARD,
+        PITCH_BACKWARD,
+        ROLL_LEFT,
+        ROLL_RIGHT,
+        YAW_CLOCKWISE,
+        YAW_CONTER_CLOCKWISE,
     };
 
     struct ControllerState {
         ControllerCommand controllerCommand;
+
+        bool operator==(const ControllerState &rhs) const;
+
+        bool operator!=(const ControllerState &rhs) const;
+
     };
 
     class ControllerListener {
