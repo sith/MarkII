@@ -13,6 +13,9 @@ public:
     MOCK_METHOD1(throttle,
                  void(uint8
                          throttleValue));
+
+    MOCK_METHOD0(stop,
+                 void());
 };
 
 #endif //MARKOS_MAIN_MOCKMOTOR_H

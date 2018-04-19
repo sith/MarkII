@@ -10,6 +10,9 @@
 namespace mark2 {
     template<typename Motor>
     class MotorManager : public ControllerListener {
+
+        static const uint8 throttleStep = 10;
+
         Motor &motor1;
         Motor &motor2;
         Motor &motor3;
@@ -29,18 +32,18 @@ namespace mark2 {
 
     template<typename Motor>
     void MotorManager<Motor>::start() {
-        motor1.throttle(1);
-        motor2.throttle(1);
-        motor3.throttle(1);
-        motor4.throttle(1);
+        motor1.throttle(throttleStep);
+        motor2.throttle(throttleStep);
+        motor3.throttle(throttleStep);
+        motor4.throttle(throttleStep);
     }
 
     template<typename Motor>
     void MotorManager<Motor>::stop() {
-        motor1.throttle(0);
-        motor2.throttle(0);
-        motor3.throttle(0);
-        motor4.throttle(0);
+        motor1.stop();
+        motor2.stop();
+        motor3.stop();
+        motor4.stop();
 
     }
 
@@ -52,6 +55,18 @@ namespace mark2 {
                 break;
             case ControllerCommand::STOP_MOTORS:
                 stop();
+                break;
+            case ControllerCommand::THRUST_UP:
+                motor1.throttle(throttleStep);
+                motor2.throttle(throttleStep);
+                motor3.throttle(throttleStep);
+                motor4.throttle(throttleStep);
+                break;
+            case ControllerCommand::THRUST_DOWN:
+                motor1.throttle(-throttleStep);
+                motor2.throttle(-throttleStep);
+                motor3.throttle(-throttleStep);
+                motor4.throttle(-throttleStep);
                 break;
         }
     }
