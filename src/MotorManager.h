@@ -6,6 +6,7 @@
 #define MARKOS_MAIN_MOTORMANAGER_H
 
 #include "Controller.h"
+#include "GenericMotor.h"
 
 namespace mark2 {
     template<typename Motor>
@@ -13,15 +14,13 @@ namespace mark2 {
 
         static const uint8 throttleStep = 10;
 
-        Motor &motor1;
-        Motor &motor2;
-        Motor &motor3;
-        Motor &motor4;
+        GenericMotor<Motor> &motor1;
+        GenericMotor<Motor> &motor2;
+        GenericMotor<Motor> &motor3;
+        GenericMotor<Motor> &motor4;
     public:
-        MotorManager(Motor &motor1, Motor &motor2, Motor &motor3, Motor &motor4) : motor1(
-                motor1), motor2(motor2),
-                                                                                   motor3(motor3),
-                                                                                   motor4(motor4) {}
+        MotorManager(GenericMotor<Motor> &motor1, GenericMotor<Motor> &motor2, GenericMotor<Motor> &motor3,
+                     GenericMotor<Motor> &motor4);
 
         void start();
 
@@ -70,5 +69,12 @@ namespace mark2 {
                 break;
         }
     }
+
+    template<typename Motor>
+    MotorManager<Motor>::MotorManager(GenericMotor<Motor> &motor1, GenericMotor<Motor> &motor2,
+                                      GenericMotor<Motor> &motor3, GenericMotor<Motor> &motor4):motor1(motor1),
+                                                                                                motor2(motor2),
+                                                                                                motor3(motor3),
+                                                                                                motor4(motor4) {}
 }
 #endif //MARKOS_MAIN_MOTORMANAGER_H

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(MarkII)
 
 add_library(${PROJECT_NAME}
-        src/MarkIIEnvironment.cpp src/MarkIIEnvironment.h src/Controller.cpp src/Controller.h src/MotorManager.h)
+        src/MarkIIEnvironment.cpp src/MarkIIEnvironment.h src/Controller.cpp src/Controller.h src/MotorManager.h src/GenericMotor.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
